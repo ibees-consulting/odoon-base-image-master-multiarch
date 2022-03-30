@@ -1,9 +1,9 @@
 # [Doodba](https://hub.docker.com/r/tecnativa/doodba)
 
 ![ci](https://github.com/Tecnativa/doodba/workflows/ci/badge.svg)
-[![](https://images.microbadger.com/badges/version/ghcr.io/odoon/odoon-base-imagelatest.svg)](https://microbadger.com/images/ghcr.io/odoon/odoon-base-imagelatest "Get your own version badge on microbadger.com")
-[![](https://images.microbadger.com/badges/image/ghcr.io/odoon/odoon-base-imagelatest.svg)](https://microbadger.com/images/ghcr.io/odoon/odoon-base-imagelatest "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/commit/ghcr.io/odoon/odoon-base-imagelatest.svg)](https://microbadger.com/images/ghcr.io/odoon/odoon-base-imagelatest "Get your own commit badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/ghcr.io/ibees-consulting/odoon-base-imagelatest.svg)](https://microbadger.com/images/ghcr.io/ibees-consulting/odoon-base-imagelatest "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/ghcr.io/ibees-consulting/odoon-base-imagelatest.svg)](https://microbadger.com/images/ghcr.io/ibees-consulting/odoon-base-imagelatest "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/commit/ghcr.io/ibees-consulting/odoon-base-imagelatest.svg)](https://microbadger.com/images/ghcr.io/ibees-consulting/odoon-base-imagelatest "Get your own commit badge on microbadger.com")
 [![](https://images.microbadger.com/badges/license/tecnativa/doodba.svg)](https://microbadger.com/images/tecnativa/doodba "Get your own license badge on microbadger.com")
 
 **Doodba** stands for **Do**cker **Od**oo **Ba**se, and it is a highly opinionated image
@@ -669,7 +669,7 @@ You can do it through **its sha256 code**.
 Get any image's code through inspect, running from a computer where the correct image
 version is downloaded:
 
-    docker image inspect --format='{{.RepoDigests}}' ghcr.io/odoon/odoon-base-image10.0-onbuild
+    docker image inspect --format='{{.RepoDigests}}' ghcr.io/ibees-consulting/odoon-base-image10.0-onbuild
 
 Alternatively, you can browse [this image's builds][builds], click on the one you know
 it works fine for you, and search for the `digest` word using your browser's _search in
@@ -689,7 +689,7 @@ Once you find them, you can use that pinned version in your builds, using a Dock
 similar to this one:
 
 ```Dockerfile
-# Hash-pinned version of ghcr.io/odoon/odoon-base-image10.0-onbuild
+# Hash-pinned version of ghcr.io/ibees-consulting/odoon-base-image10.0-onbuild
 FROM tecnativa/doodba@sha256:fba69478f9b0616561aa3aba4d18e4bcc2f728c9568057946c98d5d3817699e1
 ```
 

@@ -41,10 +41,10 @@ jobs:
           # - "12.0"
           # - "11.0"
     env:
-      # Indicates what's the equivalent to ghcr.io/odoon/odoon-base-imagelatest image
+      # Indicates what's the equivalent to ghcr.io/ibees-consulting/odoon-base-imagelatest image
       LATEST_RELEASE: "master"
       # Variables found by default in Docker Hub builder
-      DOCKER_REPO: "ghcr.io/odoon/odoon-base-image-master"
+      DOCKER_REPO: "ghcr.io/ibees-consulting/odoon-base-image-master"
       DOCKER_TAG: ${{ matrix.odoo_version }}
       GIT_SHA1: ${{ github.sha }}
       # Other variables to configure tests and execution environment
@@ -73,7 +73,7 @@ jobs:
       #   run: poetry run ./hooks/push
       - name: push to github container registry
         if:
-          github.repository == 'odoon/odoon-base-image-master' && github.ref ==
+          github.repository == 'ibees-consulting/odoon-base-image-master' && github.ref ==
           'refs/heads/master'
         env:
           REGISTRY_HOST: ghcr.io
