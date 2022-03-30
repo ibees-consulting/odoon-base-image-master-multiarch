@@ -1,0 +1,11 @@
+#!/bin/bash
+log WARNING unittest is deprecated and will be removed in Doodba 13.0, \
+    use instead: addons update --test $@
+# Shortcut to run Odoo in unit testing mode
+set -e
+addons=$1
+shift
+log INFO Executing Odoo in unittest mode for addons $addons
+# HACK `--workers 0`: https://github.com/odoo/odoo/pull/14809
+set -x
+exec odoo --workers 0 --test-enable --stop-after-init --update "$addons" "$@"
