@@ -96,6 +96,7 @@ RUN mkdir -p auto/addons auto/geoip custom/src/private \
 COPY qa /qa
 RUN python -m venv --system-site-packages /qa/venv \
     && . /qa/venv/bin/activate \
+    && pip install --upgrade pip \
     && pip install \
         click \
         coverage \
@@ -131,6 +132,7 @@ RUN build_deps=" \
     " \
     && apt-get update \
     && apt-get install -yqq --no-install-recommends $build_deps \
+    && pip install --upgrade pip \
     && pip install \
         -r https://raw.githubusercontent.com/$ODOO_SOURCE/$ODOO_VERSION/requirements.txt \
         'websocket-client~=0.56' \
