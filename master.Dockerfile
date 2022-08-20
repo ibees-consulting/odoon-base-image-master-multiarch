@@ -110,6 +110,7 @@ ENV ODOO_VERSION="$ODOO_VERSION"
 # Install Odoo hard & soft dependencies, and Doodba utilities
 # TODO: Add back pydevd-odoo once
 # https://github.com/trinhanhngoc/pydevd-odoo/issues/3 is fixed
+COPY odoo-requirements.txt /tmp/odoo-requirements
 RUN build_deps=" \
         build-essential \
         libfreetype6-dev \
@@ -132,8 +133,6 @@ RUN build_deps=" \
     " \
     && apt-get update \
     && apt-get install -yqq --no-install-recommends $build_deps \
-    && mkdir -p /tmp/odoo-requirements \
-    COPY odoo-requirements.txt /tmp/odoo-requirements
     && pip install -r /tmp/odoo-requirements/odoo-requirements.txt \
         # -r https://raw.githubusercontent.com/$ODOO_SOURCE/$ODOO_VERSION/requirements.txt \
         # -r https://raw.githubusercontent.com/odoo/odoo/master/requirements.txt \
