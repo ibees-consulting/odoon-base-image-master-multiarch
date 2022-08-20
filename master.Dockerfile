@@ -103,7 +103,7 @@ RUN python -m venv --system-site-packages /qa/venv \
     && deactivate \
     && mkdir -p /qa/artifacts
 
-ARG ODOO_SOURCE=OCA/OCB
+ARG ODOO_SOURCE=odoo/odoo
 ARG ODOO_VERSION=master
 ENV ODOO_VERSION="$ODOO_VERSION"
 
@@ -134,8 +134,8 @@ RUN build_deps=" \
     && apt-get install -yqq --no-install-recommends $build_deps \
     && pip install --upgrade pip \
     && pip install \
-        # -r https://raw.githubusercontent.com/$ODOO_SOURCE/$ODOO_VERSION/requirements.txt \
-        -r https://github.com/odoo/odoo/blob/master/requirements.txt \
+        -r https://raw.githubusercontent.com/$ODOO_SOURCE/$ODOO_VERSION/requirements.txt \
+        # -r https://raw.githubusercontent.com/odoo/odoo/master/requirements.txt \
         'websocket-client~=0.56' \
         astor \
         # Install fix from https://github.com/acsone/click-odoo-contrib/pull/93
