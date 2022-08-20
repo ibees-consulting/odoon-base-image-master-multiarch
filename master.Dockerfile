@@ -36,6 +36,7 @@ ENV DB_FILTER=.* \
 RUN apt-get -qq update \
     && apt-get install -yqq --no-install-recommends \
         curl \
+    && \
     # && curl -SLo wkhtmltox.deb https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/${WKHTMLTOPDF_VERSION}/wkhtmltox_${WKHTMLTOPDF_VERSION}-1.buster_amd64.deb \
     if [ "$(uname -m)" = "aarch64" ]; then \
         curl -o wkhtmltox.deb -sSL https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.buster_arm64.deb \
