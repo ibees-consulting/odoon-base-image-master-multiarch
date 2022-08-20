@@ -133,7 +133,7 @@ RUN build_deps=" \
     && apt-get update \
     && apt-get install -yqq --no-install-recommends $build_deps \
     && pip install --upgrade pip \
-    && pip install -r odoo-requirements.txt \
+    && pip install -r ./odoo-requirements.txt \
         # -r https://raw.githubusercontent.com/$ODOO_SOURCE/$ODOO_VERSION/requirements.txt \
         # -r https://raw.githubusercontent.com/odoo/odoo/master/requirements.txt \
         'websocket-client~=0.56' \
