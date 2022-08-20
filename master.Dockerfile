@@ -2,7 +2,7 @@ FROM python:3.8-slim-bullseye AS base
 
 EXPOSE 8069 8072
 
-ARG GEOIP_UPDATER_VERSION=4.3.0
+ARG GEOIP_UPDATER_VERSION=4.9.0
 ARG WKHTMLTOPDF_VERSION=0.12.5
 ARG WKHTMLTOPDF_CHECKSUM='ea8277df4297afc507c61122f3c349af142f31e5'
 ENV DB_FILTER=.* \
@@ -61,9 +61,16 @@ RUN apt-get -qq update \
     && echo 'deb http://apt.postgresql.org/pub/repos/apt/ bullseye-pgdg main' >> /etc/apt/sources.list.d/postgresql.list \
     && curl -SL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
     && apt-get update \
-    && curl --silent -L --output geoipupdate_${GEOIP_UPDATER_VERSION}_linux_amd64.deb https://github.com/maxmind/geoipupdate/releases/download/v${GEOIP_UPDATER_VERSION}/geoipupdate_${GEOIP_UPDATER_VERSION}_linux_amd64.deb \
+    && \
+    if [ "$(uname -m)" = "aarch64" ]; then \
+        curl --silent -L --output geoipupdate_${GEOIP_UPDATER_VERSION}_linux_arm64.deb https://github.com/maxmind/geoipupdate/releases/download/v${GEOIP_UPDATER_VERSION}/geoipupdate_${GEOIP_UPDATER_VERSION}_linux_arm64.deb \
+    && dpkg -i geoipupdate_${GEOIP_UPDATER_VERSION}_linux_arm64.deb \
+    && rm geoipupdate_${GEOIP_UPDATER_VERSION}_linux_arm64.deb \
+    ; else \
+        curl --silent -L --output geoipupdate_${GEOIP_UPDATER_VERSION}_linux_amd64.deb https://github.com/maxmind/geoipupdate/releases/download/v${GEOIP_UPDATER_VERSION}/geoipupdate_${GEOIP_UPDATER_VERSION}_linux_amd64.deb \
     && dpkg -i geoipupdate_${GEOIP_UPDATER_VERSION}_linux_amd64.deb \
     && rm geoipupdate_${GEOIP_UPDATER_VERSION}_linux_amd64.deb \
+    ; fi \
     && apt-get autopurge -yqq \
     && rm -Rf wkhtmltox.deb /var/lib/apt/lists/* /tmp/* \
     && sync
